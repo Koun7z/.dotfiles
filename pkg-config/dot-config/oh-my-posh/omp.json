@@ -1,0 +1,242 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "final_space": true,
+    "version": 4,
+    "shell_integration": true,
+    "enable_cursor_positioning": true,
+    "async": true,
+    "upgrade": {
+        "notice": true,
+        "interval": "24h",
+        "auto": false,
+        "source": "cdn"
+    },
+    "palette": {
+        "Rosewater": "#f5e0dc",
+        "Flamingo": "#f2cdcd",
+        "Pink": "#f5c2e0",
+        "Muave": "#cba6f7",
+        "Red": "#f38ba8",
+        "Maroon": "#eba0ac",
+        "Peach": "#fab387",
+        "Yellow": "#f9e2af",
+        "Green": "#a6e3a1",
+        "Teal": "#94e2d5",
+        "Sky": "#89b4fa",
+        "Sapphire": "#74c7ec",
+        "Blue": "#89b4fa",
+        "Lavender": "#b4befe",
+        "Text": "#cdd6f4",
+        "Subtext1": "#bac2de",
+        "Subtext0": "#a6adc8",
+        "Overlay2": "#9399b2",
+        "Overlay1": "#7f849c",
+        "Overlay0": "#6c7086",
+        "Surface2": "#585b70",
+        "Surface1": "#45475a",
+        "Surface0": "#313244",
+        "Base": "#1e1e2e",
+        "Mantle": "#181825",
+        "Crust": "#11111b"
+    },
+    "transient_prompt": {
+        "background": "transparent",
+        "foreground": "p:Lavender",
+        "template": "-> "
+    },
+    "secondary_prompt": {
+        "background": "transparent",
+        "foreground": "p:Lavender",
+        "template": "-> "
+    },
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "os",
+                    "style": "plain",
+                    "leading_diamond": "",
+                    "foreground": "p:Text",
+                    "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+                },
+                {
+                    "type": "path",
+                    "style": "plain",
+                    "powerline_symbol": "\ue0b0",
+                    "foreground": "p:Lavender",
+                    "template": " 󰉋 {{ .Path }}",
+                    "options": {
+                        "style": "agnoster_short",
+                        "display_root": true,
+                        "hide_root_location": false,
+                        "max_depth": 3,
+                        "max_width": 50
+                    }
+                },
+                {
+                    "type": "git",
+                    "style": "plain",
+                    "leading_diamond": "\uE0B6",
+                    "trailing_diamond": "\uE0B4",
+                    "foreground": "p:Text",
+                    "foreground_templates": [
+                        "{{ if or (.Working.Changed) (.Staging.Changed) }}p:Pink{{ end }}",
+                        "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:Red{{ end }}",
+                        "{{ if gt .Ahead 0 }}p:Muave{{ end }} ",
+                        "{{ if gt .Behind 0 }}p:Yellow{{ end }}"
+                    ],
+                    "template": " on {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}",
+                    "options": {
+                        "fetch_status": true,
+                        "fetch_upstream_icon": true,
+                        "untracked_modes": {
+                            "/Users/user/Projects/oh-my-posh/": "no"
+                        },
+                        "branch_icon": "󰘬 ",
+                        "branch_identical_icon": "",
+                        "branch_ahead_icon": "",
+                        "branch_behind_icon": "",
+                        "mapped_branches": {}
+                    }
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "executiontime",
+                    "style": "diamond",
+                    "leading_diamond": "",
+                    "trailing_diamond": "",
+                    "foreground": "p:Peach",
+                    "background": "p:Surface1",
+                    "template": "{{ if or (gt .Ms 200) (ne .Code 0) }}{{ if ne .Code 0 }}<p:Red>󱫧{{ else }}<p:Green>󱫑{{ end }} {{ .FormattedMs }}{{ end }}{{ if ne .Code 0 }}  {{ .Code }}{{ end }}",
+                    "options": {
+                        "threshold": 100,
+                        "style": "austin",
+                        "always_enabled": true
+                    }
+                },
+                {
+                    "type": "python",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "p:Yellow",
+                    "background": "p:Surface1",
+                    "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
+                },
+                {
+                    "type": "rust",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "p:Maroon",
+                    "background": "p:Surface1",
+                    "template": " {{ .Full }} "
+                },
+                {
+                    "type": "dotnet",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "p:Lavender",
+                    "background": "p:Surface1",
+                    "template": " {{ .Full }} "
+                },
+                {
+                    "type": "java",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "p:Peach",
+                    "background": "p:Surface1",
+                    "template": " {{ .Full }}"
+                },
+                {
+                    "type": "lua",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "p:Blue",
+                    "background": "p:Surface1",
+                    "template": " {{ .Full }} "
+                },
+                {
+                    "type": "docker",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "p:Blue",
+                    "background": "p:Surface1",
+                    "fetch_context": true,
+                    "template": " {{ .Context }} "
+                },
+                {
+                    "type": "project",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "#193549",
+                    "background": "p:Lavender",
+                    "template": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }} {{ if .Name }}{{ .Name }}{{ end }}{{ end }}"
+                },
+                {
+                    "type": "session",
+                    "style": "diamond",
+                    "background": "p:Surface1",
+                    "foreground": "p:Muave",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "template": "{{ if .SSHSession }}󰢹 {{ .UserName }}@{{ .HostName }}{{ end }}"
+                },
+                {
+                    "type": "time",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "background": "p:Surface1",
+                    "foreground": "p:Lavender",
+                    "template": " {{ .CurrentDate | date .Format }}",
+                    "options": {
+                        "time_format": "15:04:05"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "type": "status",
+                    "style": "plain",
+                    "leading_diamond": "",
+                    "trailing_diamond": "",
+                    "foreground": "p:Green",
+                    "foreground_templates": [
+                        "{{ if .Error }}p:Red{{ end }}"
+                    ],
+                    "background_templates": [],
+                    "template": "{{ .String }}",
+                    "options": {
+                        "always_enabled": true,
+                        "status_template": "#"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "rprompt",
+            "alignment": "right",
+            "segments": []
+        }
+    ],
+    "tooltips_action": "replace",
+    "tooltips": []
+}
