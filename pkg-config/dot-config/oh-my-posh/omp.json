@@ -137,7 +137,7 @@
                     "trailing_diamond": "",
                     "foreground": "p:Maroon",
                     "background": "p:Surface1",
-                    "template": " {{ .Full }} "
+                    "template": " {{ .Full }}"
                 },
                 {
                     "type": "dotnet",
@@ -146,7 +146,7 @@
                     "trailing_diamond": "",
                     "foreground": "p:Lavender",
                     "background": "p:Surface1",
-                    "template": " {{ .Full }} "
+                    "template": " {{ .Full }}"
                 },
                 {
                     "type": "java",
@@ -164,7 +164,7 @@
                     "trailing_diamond": "",
                     "foreground": "p:Blue",
                     "background": "p:Surface1",
-                    "template": " {{ .Full }} "
+                    "template": " {{ .Full }}"
                 },
                 {
                     "type": "docker",
@@ -184,6 +184,15 @@
                     "foreground": "#193549",
                     "background": "p:Lavender",
                     "template": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }} {{ if .Name }}{{ .Name }}{{ end }}{{ end }}"
+                },
+                {
+                    "type": "text",
+                    "style": "diamond",
+                    "background": "p:Surface1",
+                    "foreground": "p:Muave",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "template": "{{ if .Env.CONTAINER_ID }}󰆧 {{ .Env.CONTAINER_ID}}{{ end }}"
                 },
                 {
                     "type": "session",
