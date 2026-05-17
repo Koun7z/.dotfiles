@@ -202,18 +202,6 @@
                     "leading_diamond": " ",
                     "trailing_diamond": "",
                     "template": "{{ if .SSHSession }}󰢹 {{ .UserName }}@{{ .HostName }}{{ end }}"
-                },
-                {
-                    "type": "time",
-                    "style": "diamond",
-                    "leading_diamond": " ",
-                    "trailing_diamond": "",
-                    "background": "p:Surface1",
-                    "foreground": "p:Lavender",
-                    "template": " {{ .CurrentDate | date .Format }}",
-                    "options": {
-                        "time_format": "15:04:05"
-                    }
                 }
             ]
         },
