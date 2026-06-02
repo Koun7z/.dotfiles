@@ -55,6 +55,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.sp
 
 alias omp-conf="nvim ~/.config/oh-my-posh/omp.json"
 alias pacman-history="expac --timefmt='%Y-%m-%d %H:%M:%S' '%l\t%n' \$(pacman -Qqe) | sort -r"
+alias minicom="minicom -c on "
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
