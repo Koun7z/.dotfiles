@@ -1,6 +1,8 @@
 conda-init() {
     if [[ ! -x "$(command -v conda)" ]]; then
         source /opt/miniconda3/etc/profile.d/conda.sh
+    else
+        exit 127
     fi
 
     if [ -n "$1" ]; then
@@ -14,7 +16,7 @@ omp-preview() {
     oh-my-posh print preview --force --config "$OMP_CONFIG"
 }
 
-DEFAULT_USER="pwoli"
+export DEFAULT_USER="pwoli"
 
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
   true
@@ -33,7 +35,6 @@ plugins=(
   git
   aliases
   archlinux
-  #vi-mode # This one fucks up transient prompt, off for now
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-history-substring-search
@@ -74,9 +75,9 @@ else
 fi
 
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
- export OMP_CONFIG="$HOME/.config/oh-my-posh/omp.json"
+ export OMP_CONFIG="$HOME/.config/oh-my-posh/SimplePpuccin.omp.json"
 else
- export OMP_CONFIG="$HOME/.config/oh-my-posh/omp.json"
+ export OMP_CONFIG="$HOME/.config/oh-my-posh/SimplePpuccin.omp.json"
 fi
 
 eval "$(oh-my-posh init zsh --config "$OMP_CONFIG")"

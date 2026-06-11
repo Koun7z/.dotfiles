@@ -5,12 +5,7 @@
     "shell_integration": true,
     "enable_cursor_positioning": true,
     "async": true,
-    "upgrade": {
-        "notice": true,
-        "interval": "24h",
-        "auto": false,
-        "source": "cdn"
-    },
+    "streaming": 100,
     "palette": {
         "Rosewater": "#f5e0dc",
         "Flamingo": "#f2cdcd",
@@ -39,16 +34,6 @@
         "Mantle": "#181825",
         "Crust": "#11111b"
     },
-    "transient_prompt": {
-        "background": "transparent",
-        "foreground": "p:Lavender",
-        "template": "-> "
-    },
-    "secondary_prompt": {
-        "background": "transparent",
-        "foreground": "p:Lavender",
-        "template": "-> "
-    },
     "blocks": [
         {
             "type": "prompt",
@@ -57,16 +42,14 @@
                 {
                     "type": "os",
                     "style": "plain",
-                    "leading_diamond": "",
                     "foreground": "p:Text",
-                    "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+                    "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} "
                 },
                 {
                     "type": "path",
                     "style": "plain",
-                    "powerline_symbol": "\ue0b0",
                     "foreground": "p:Lavender",
-                    "template": " 󰉋 {{ .Path }}",
+                    "template": "󰉋 {{ .Path }}",
                     "options": {
                         "style": "agnoster_short",
                         "display_root": true,
@@ -78,8 +61,6 @@
                 {
                     "type": "git",
                     "style": "plain",
-                    "leading_diamond": "\uE0B6",
-                    "trailing_diamond": "\uE0B4",
                     "foreground": "p:Text",
                     "foreground_templates": [
                         "{{ if or (.Working.Changed) (.Staging.Changed) }}p:Pink{{ end }}",
@@ -87,14 +68,14 @@
                         "{{ if gt .Ahead 0 }}p:Muave{{ end }} ",
                         "{{ if gt .Behind 0 }}p:Yellow{{ end }}"
                     ],
-                    "template": " on {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}",
+                    "template": " on {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}",
                     "options": {
                         "fetch_status": true,
                         "fetch_upstream_icon": true,
                         "untracked_modes": {
                             "/Users/user/Projects/oh-my-posh/": "no"
                         },
-                        "branch_icon": "󰘬 ",
+                        "branch_icon": " 󰘬 ",
                         "branch_identical_icon": "",
                         "branch_ahead_icon": "",
                         "branch_behind_icon": "",
@@ -119,6 +100,18 @@
                         "threshold": 100,
                         "style": "austin",
                         "always_enabled": true
+                    }
+                },
+                {
+                    "type": "upgrade",
+                    "style": "diamond",
+                    "leading_diamond": " ",
+                    "trailing_diamond": "",
+                    "foreground": "p:Peach",
+                    "background": "p:Surface1",
+                    "template": " ",
+                    "options": {
+                        "cache_duration": "168h"
                     }
                 },
                 {
@@ -181,8 +174,8 @@
                     "style": "diamond",
                     "leading_diamond": " ",
                     "trailing_diamond": "",
-                    "foreground": "#193549",
-                    "background": "p:Lavender",
+                    "foreground": "p:Green",
+                    "background": "p:Surface1",
                     "template": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} {{.Version}}{{ end }} {{ if .Name }}{{ .Name }}{{ end }}{{ end }}"
                 },
                 {
@@ -213,8 +206,6 @@
                 {
                     "type": "status",
                     "style": "plain",
-                    "leading_diamond": "",
-                    "trailing_diamond": "",
                     "foreground": "p:Green",
                     "foreground_templates": [
                         "{{ if .Error }}p:Red{{ end }}"
@@ -234,6 +225,23 @@
             "segments": []
         }
     ],
+    "secondary_prompt": {
+        "background": "transparent",
+        "foreground": "p:Lavender",
+        "template": "-> "
+    },
+    "transient_prompt":
+    {
+        "background": "transparent",
+        "foreground": "p:Text",
+        "template": "# "
+    },
+    "upgrade": {
+        "notice": true,
+        "interval": "168h",
+        "auto": false,
+        "source": "cdn"
+    },
     "tooltips_action": "replace",
     "tooltips": []
 }
